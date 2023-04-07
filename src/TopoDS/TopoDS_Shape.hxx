@@ -91,7 +91,7 @@ public:
   const TopLoc_Location& Location() const { return myLocation; }
 
   //! Sets the shape local coordinate system.
-  void Location (const TopLoc_Location& theLoc, const Standard_Boolean theRaiseExc = Standard_True)
+  void Location(const TopLoc_Location& theLoc, const Standard_Boolean theRaiseExc = Standard_False)
   {
     const gp_Trsf& aTrsf = theLoc.Transformation();
     if ((Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec() || aTrsf.IsNegative()) && theRaiseExc)
@@ -188,7 +188,7 @@ public:
   void Convex (Standard_Boolean theIsConvex) { myTShape->Convex (theIsConvex); }
 
   //! Multiplies the Shape location by thePosition.
-  void Move(const TopLoc_Location& thePosition, const Standard_Boolean theRaiseExc = Standard_True)
+  void Move(const TopLoc_Location& thePosition, const Standard_Boolean theRaiseExc = Standard_False)
   {
     const gp_Trsf& aTrsf = thePosition.Transformation();
     if ((Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec() || aTrsf.IsNegative()) && theRaiseExc)
