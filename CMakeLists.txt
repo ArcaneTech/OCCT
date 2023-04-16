@@ -1291,3 +1291,8 @@ endforeach()
 OCCT_UPDATE_TARGET_FILE ()
 
 message (STATUS "Info: \(${CURRENT_TIME}\) OCCT configuration files prepared")
+
+SET(CPACK_GENERATOR "DEB")
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Arcane Technologies")
+INCLUDE(CPack)
+
