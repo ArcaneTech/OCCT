@@ -233,6 +233,12 @@ void StepToTopoDS_TranslateFace::Init
 #endif    
     FaceBound = FS->BoundsValue(i);
     Loop      = FaceBound->Bound();
+
+    if (Loop.IsNull())
+    {
+      TP->AddWarning(FaceBound, "The target face did not contain a loop");
+      continue;
+    }
     
     // ------------------------
     // The Loop is a VertexLoop

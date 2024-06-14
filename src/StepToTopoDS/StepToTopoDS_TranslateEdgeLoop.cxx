@@ -346,6 +346,13 @@ void StepToTopoDS_TranslateEdgeLoop::Init(const Handle(StepShape_FaceBound)& Fac
     Standard_Boolean istV = aTool.IsBound(Vstart);
     Standard_Boolean iseV = aTool.IsBound(Vend);
     TopoDS_Vertex V1, V2;
+
+    if (V1.IsNull() || V2.IsNull())
+    {
+      TP->AddWarning(EL->EdgeListValue(j), "A null vertex was found");
+      continue;
+    }
+
     StepToTopoDS_TranslateVertex myTranVertex1(Vstart, aTool, NMTool);
     StepToTopoDS_TranslateVertex myTranVertex2(Vend, aTool, NMTool);
 
