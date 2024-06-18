@@ -138,16 +138,9 @@ Interface_EntityIterator::Interface_EntityIterator ()
 {
 //  NbEntity pas const (on ne sait pas comment il est implemente apres tout)
   if (thelist.IsNull()) throw Standard_NoSuchObject("Interface_EntityIterator");
-  try
-  {
-    if (thecurr->Value() < 1 || thecurr->Value() > thelist->Length())
-      throw Standard_NoSuchObject("Interface_EntityIterator");
-    return thelist->Value(thecurr->Value());
-  }
-  catch (Standard_NoSuchObject&)
-  {
+  if (thecurr->Value() < 1 || thecurr->Value() > thelist->Length())
     return nullptr;
-  }
+  return thelist->Value(thecurr->Value());
 }
 
     Handle(TColStd_HSequenceOfTransient)  Interface_EntityIterator::Content () const
