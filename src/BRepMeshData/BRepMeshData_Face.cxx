@@ -70,5 +70,7 @@ const IMeshData::IWireHandle& BRepMeshData_Face::AddWire (
 const IMeshData::IWireHandle& BRepMeshData_Face::GetWire (
   const Standard_Integer theIndex) const
 {
+  if (myDWires.Length() == 0)
+    return nullptr;
   return myDWires (theIndex);
 }
