@@ -118,7 +118,7 @@ namespace
     void operator()(const Standard_Integer theFaceIndex) const
     {
       const IMeshData::IFaceHandle& aDFace = myModel->GetFace(theFaceIndex);
-      if (aDFace->GetSurface()->GetType() != GeomAbs_Cone)
+      if (aDFace->GetSurface()->GetType() != GeomAbs_Cone || aDFace->WiresNb() == 0)
       {
         return;
       }
